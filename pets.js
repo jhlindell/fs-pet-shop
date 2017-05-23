@@ -4,6 +4,7 @@ switch(process.argv[2]){
     readPets();
     break;
   case 'create':
+    createPets();
     break;
   case 'update':
 
@@ -33,4 +34,24 @@ function readPets(){
       }
     }
   });
+}
+
+function createPets(){
+  if(!process.argv[3] || !process.argv[4] || !process.argv[5]){
+    console.error("Usage: node pets.js create AGE KIND NAME");
+  } else {
+    fs.readFile('./pets.json', 'utf8', function(err, res){
+      response = JSON.parse(res);
+      let petObj = {};
+      petObj.age = process.argv[3];
+      petObj.kind = process.argv[4];
+      petObj.name = process.argv[5];
+      response.push(petObj);
+
+      fs.writeFile('pets.json', JSON.stringify(response), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+      });
+    });
+  }
 }

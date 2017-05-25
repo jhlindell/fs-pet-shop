@@ -16,8 +16,6 @@ router.get("/:id", function(req, res){
     if(id > -1 && id < response.length) {
       res.send(response[id]);
     } else {
-      // res.status = 404;
-      // res.send("index out of bounds");
       res.sendStatus(404);
     }
   });

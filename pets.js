@@ -19,7 +19,7 @@ switch(process.argv[2]){
 
 function readPets(){
   fs.readFile('./pets.json', 'utf8', function(err, res){
-    response = JSON.parse(res);
+    let response = JSON.parse(res);
     if(!process.argv[3]){
       if (err){
         console.error(err);
@@ -44,7 +44,7 @@ function createPets(){
     process.exit(1);
   } else {
     fs.readFile('./pets.json', 'utf8', function(err, res){
-      response = JSON.parse(res);
+      let response = JSON.parse(res);
       let petObj = {};
       petObj.age = Number(process.argv[3]);
       petObj.kind = process.argv[4];

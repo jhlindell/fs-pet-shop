@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 8000;
-const router = require("./expressServerRoutes");
+const router = require("./restfulRoutes");
 
 app.use("/pets", router);
 
